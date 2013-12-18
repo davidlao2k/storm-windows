@@ -86,18 +86,10 @@ if not defined STORM_LOGBACK_CONFIGURATION_FILE (
   set STORM_LOGBACK_CONFIGURATION_FILE=%STORM_CONF_DIR%\logback.xml
 )
 
-if not defined STORM_WORKER_JMXREMOTE_PORT_OFFSET (
-  set STORM_WORKER_JMXREMOTE_PORT_OFFSET=1000
-)
-
 set STORM_OPTS=-Dstorm.home=%STORM_HOME% -Djava.library.path=sbin
 set STORM_OPTS=%STORM_OPTS% -Dlogback.configurationFile=%STORM_LOGBACK_CONFIGURATION_FILE%
 set STORM_OPTS=%STORM_OPTS% -Dstorm.log.dir=%STORM_LOG_DIR%
 set STORM_OPTS=%STORM_OPTS% -Dstorm.root.logger=%STORM_ROOT_LOGGER%
-set STORM_OPTS=%STORM_OPTS% -Dstorm.worker.jmxremote.port.offset=%STORM_WORKER_JMXREMOTE_PORT_OFFSET%
-set STORM_OPTS=%STORM_OPTS% -Dcom.sun.management.jmxremote
-set STORM_OPTS=%STORM_OPTS% -Dcom.sun.management.jmxremote.authenticate=false
-set STORM_OPTS=%STORM_OPTS% -Dcom.sun.management.jmxremote.ssl=false
 
 
 if not defined STORM_SERVER_OPTS (

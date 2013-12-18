@@ -107,8 +107,7 @@
 
 :nimbus
   set CLASS=backtype.storm.daemon.nimbus
-  set JMX_REMOTE_PORT=7627
-  set STORM_OPTS=%STORM_SERVER_OPTS% %STORM_OPTS% -Dcom.sun.management.jmxremote.port=%JMX_REMOTE_PORT%
+  set STORM_OPTS=%STORM_SERVER_OPTS% %STORM_OPTS%
   goto :eof
 
 :rebalance
@@ -128,8 +127,7 @@
   
 :supervisor
   set CLASS=backtype.storm.daemon.supervisor
-  set JMX_REMOTE_PORT=7699
-  set STORM_OPTS=%STORM_SERVER_OPTS% %STORM_OPTS% -Dcom.sun.management.jmxremote.port=%JMX_REMOTE_PORT%
+  set STORM_OPTS=%STORM_SERVER_OPTS% %STORM_OPTS%
   goto :eof
 
 :ui
@@ -139,14 +137,7 @@
 
 :zookeeper
   set CLASS=org.apache.zookeeper.server.quorum.QuorumPeerMain
-  set JMX_REMOTE_PORT=3181
-  set STORM_OPTS=%STORM_SERVER_OPTS% %STORM_OPTS% -Dcom.sun.management.jmxremote.port=%JMX_REMOTE_PORT%
-  goto :eof
-
-:compile
-  echo Compiling %1...
-  set CLASS=scp.spec.compile
-  set STORM_OPTS=%STORM_CLIENT_OPTS% %STORM_OPTS%
+  set STORM_OPTS=%STORM_SERVER_OPTS% %STORM_OPTS%
   goto :eof
 
 :version
@@ -175,7 +166,7 @@
   @echo where COMMAND is one of:
   @echo   activate             activates the specified topology's spouts
   @echo   classpath            prints the classpath used by the storm client when running commands
-  @echo   deactivatea          deactivates the specified topology's spouts
+  @echo   deactivate           deactivates the specified topology's spouts
   @echo   dev-zookeeper        launches a fresh dev/test Zookeeper server
   @echo   drpc                 launches a DRPC daemon
   @echo   help
